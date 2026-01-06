@@ -1,0 +1,13 @@
+my-flag-1:
+  variations:
+    enabled: true
+    disabled: false
+  targeting:
+    - name: Target dev environment
+      query: env eq "dev"
+      variation: enabled
+    - name: Target stg environment
+      query: env eq "stg"
+      variation: disabled
+  defaultRule:
+    variation: disabled

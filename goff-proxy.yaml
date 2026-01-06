@@ -1,0 +1,4 @@
+retrievers:
+  - kind: file
+    path: /goff/flags.yaml
+enableSwagger: true
