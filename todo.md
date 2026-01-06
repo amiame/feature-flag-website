@@ -1,6 +1,6 @@
 - [x] Where to store the feature flag?
 - [x] Set up relay proxy
-- [ ] Set up a page to show the feature flag status for dev
+- [x] Set up a page to show the feature flag status for dev
 - [ ] Set up a button to toggle the feature flag
 - [ ] Set up another page to show the feature flag status for staging 
 - [ ] Set up tabs to switch between dev and staging feature flag status
@@ -16,3 +16,8 @@
 
 # Set up relay proxy
 - Done. Just followed the instructions in https://gofeatureflag.org/docs/relay-proxy/getting_started.
+
+# Set up a page to show the feature flag status for dev
+- Done. The website shows the feature flag status for dev environment.
+- Screenshot:
+![dev-flag-status](./progress/a.png)
