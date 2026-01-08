@@ -1,0 +1,5 @@
+retrievers:
+  - kind: postgresql
+    uri: "postgres://pg:pg@postgres:5432/ff_db"
+    table: "go_feature_flag"
+enableSwagger: true

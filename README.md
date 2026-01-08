@@ -2,11 +2,25 @@
 Website to control feature flags
 
 # To run locally
+## Run the postgres database
+Run:
+```
+docker compose --file docker-compose.yaml up -d postgres
+docker compose --file docker-compose.yaml up -d adminer
+```
+
+### Check that the database is running
+Open the browser at `localhost:8080` to see the Adminer interface. Use the following credentials to log in:
+- System: PostgreSQL
+- Server: postgres
+- Username: pg
+- Password: pg
+- Database: ff_db
+
 ## Run the relay proxy
 Run:
 ```
-docker pull gofeatureflag/go-feature-flag:latest
-docker run -d --rm -v (pwd)/goff-proxy.yaml:/goff/goff-proxy.yaml -v (pwd)/flags.yaml:/goff/flags.yaml -p 1031:1031 --name ff-proxy gofeatureflag/go-feature-flag
+docker compose --file docker-compose.yaml up -d ff-proxy
 ```
 
 ### Check that the relay proxy is running

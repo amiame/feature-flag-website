@@ -21,3 +21,6 @@
 - Done. The website shows the feature flag status for dev environment.
 - Screenshot:
 ![dev-flag-status](./progress/a.png)
+
+# Set up a button to toggle the feature flag
+- Turns out, if I store the feature flag in a file, I cannot toggle it via the relay proxy API. So I need to store the feature flag in a database. Moving on to the next task.
