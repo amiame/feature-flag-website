@@ -19,6 +19,7 @@ Authorize with an API key picked from `ff-proxy/goff-proxy.yaml` file.
 ## To run the website
 Compile the website with:
 ```
+cd fe
 npx tsc
 ```
 
