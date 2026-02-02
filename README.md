@@ -5,7 +5,7 @@ Website to control feature flags
 ## Run the relay proxy
 Run:
 ```
-docker compose --file docker-compose.yaml up -d ff-proxy
+docker compose --file docker-compose.yaml up -d
 ```
 
 ### Check that the relay proxy is running

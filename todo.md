@@ -18,3 +18,6 @@
 
 # Set up relay proxy
 - Done. Just followed the instructions in https://gofeatureflag.org/docs/relay-proxy/getting_started.
+
+# Set up a page top page to show a list of environments
+- Saved flags as a structure of folders inside S3.
