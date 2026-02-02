@@ -1,0 +1,6 @@
+survey-answer-ff-1:
+  variations:
+    enabled: true
+    disabled: false
+  defaultRule:
+    variation: disabled

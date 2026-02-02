@@ -1,27 +1,9 @@
 services:
-  postgres:
-    image: postgres:16.11-alpine3.23
-    environment:
-      POSTGRES_USER: pg
-      POSTGRES_PASSWORD: pg
-      POSTGRES_DB: ff_db
-    ports:
-      - "5433:5432"
-    volumes:
-      - ./db/init:/docker-entrypoint-initdb.d:ro
-    networks:
-      - main
-  adminer:
-    image: adminer:standalone
-    restart: always
-    ports:
-      - 8080:8080
-    networks:
-      - main
   ff-proxy:
-    image: gofeatureflag/go-feature-flag
+    image: gofeatureflag/go-feature-flag:v1.49
     volumes:
       - ./ff-proxy/goff-proxy.yaml:/goff/goff-proxy.yaml
+      - ./ff-proxy/flags:/flags
     ports:
       - "1031:1031"
     networks:

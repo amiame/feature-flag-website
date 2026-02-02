@@ -1,0 +1,12 @@
+display-banner:
+  variations:
+    enabled: true
+    disabled: false
+  defaultRule:
+    variation: disabled
+monitor:
+  variations:
+    enabled: true
+    disabled: false
+  defaultRule:
+    variation: enabled

@@ -1,5 +1,150 @@
-retrievers:
-  - kind: postgresql
-    uri: "postgres://pg:pg@postgres:5432/ff_db"
-    table: "go_feature_flag"
-enableSwagger: true
+server:
+  mode: http
+  port: 1031
+logLevel: INFO
+swagger:
+  enabled: true
+authorizedKeys:
+  admin:
+    - "adminKey"
+    - "long-env-dev/service-a/adminKey"
+    - "long-env-stg/service-a/adminKey"
+    - "long-env-prd/service-a/adminKey"
+    - "env-service-a-1/service-a/adminKey"
+    - "env-service-a-2/service-a/adminKey"
+    - "env-qa-1/service-a/adminKey"
+    - "env-qa-2/service-a/adminKey"
+    - "long-env-dev/service-b/adminKey"
+    - "long-env-stg/service-b/adminKey"
+    - "long-env-prd/service-b/adminKey"
+    - "env-service-b-1/service-b/adminKey"
+    - "env-service-b-2/service-b/adminKey"
+    - "env-qa-1/service-b/adminKey"
+    - "env-qa-2/service-b/adminKey"
+flagSets:
+  #----------------------------------------
+  # Service A
+  ## Long-living environments
+  - name: long-env-dev/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-dev/service-a/adminKey"
+      - "long-env-dev/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-dev/service-a/flags.yaml
+    exporter:
+      kind: log
+
+  - name: long-env-stg/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-stg/service-a/adminKey"
+      - "long-env-stg/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-stg/service-a/flags.yaml
+
+  - name: long-env-prd/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-prd/service-a/adminKey"
+      - "long-env-prd/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-prd/service-a/flags.yaml
+
+  ## Service A team on-demand environments
+  - name: env-service-a-1/service-a
+    pollingInterval: 1000
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-service-a-1/service-a/adminKey"
+      - "env-service-a-1/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/env-service-a-1/service-a/flags.yaml
+
+  - name: env-service-a-2/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-service-a-2/service-a/adminKey"
+      - "env-service-a-2/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/env-service-a-2/service-a/flags.yaml
+
+  ## QA team on-demand environments
+  - name: env-qa-1/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-qa-1/service-a/adminKey"
+      - "env-qa-1/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/env-qa-1/service-a/flags.yaml
+
+  - name: env-qa-2/service-a
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-qa-2/service-a/adminKey"
+      - "env-qa-2/service-a"
+    retrievers:
+      - kind: file
+        path: /flags/env-qa-2/service-a/flags.yaml
+
+  #----------------------------------------
+  # Service B
+  # Long-living environments
+  - name: long-env-dev/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-dev/service-b/adminKey"
+      - "long-env-dev/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-dev/service-b/flags.yaml
+    exporter:
+      kind: log
+
+  - name: long-env-stg/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-stg/service-b/adminKey"
+      - "long-env-stg/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-stg/service-b/flags.yaml
+
+  - name: long-env-prd/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "long-env-prd/service-b/adminKey"
+      - "long-env-prd/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/long-env-stg/service-b/flags.yaml
+
+  # Service B team on-demand environments
+  - name: env-service-b-1/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-service-b-1/service-b/adminKey"
+      - "env-service-b-1/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/env-service-b-1/service-b/flags.yaml
+
+  - name: env-service-b-2/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-service-b-2/service-b/adminKey"
+      - "env-service-b-2/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/env-service-b-2/service-b/flags.yaml
+
+  # QA team on-demand environments
+  - name: env-qa-1/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-qa-1/service-b/adminKey"
+      - "env-qa-1/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/env-qa-1/service-b/flags.yaml
+
+  - name: env-qa-2/service-b
+    apiKeys: # Keep the API key same as name to simplify implementation. It's OK because the proxy can only retrieve flags, not modify them.
+      - "env-qa-2/service-b/adminKey"
+      - "env-qa-2/service-b"
+    retrievers:
+      - kind: file
+        path: /flags/env-qa-2/service-b/flags.yaml
