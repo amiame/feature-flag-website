@@ -14,7 +14,7 @@ type Fixtures = {
   be: StartedTestContainer;
   fe: StartedTestContainer;
 
-  feUrl: string;
+  feURL: string;
 };
 
 export const test = base.extend<Fixtures>({
@@ -98,7 +98,7 @@ export const test = base.extend<Fixtures>({
     { scope: "worker" },
   ],
 
-  feUrl: [
+  feURL: [
     async ({ fe }, use) => {
       const host = fe.getHost();
       const port = fe.getMappedPort(3000); // match exposed container port above
